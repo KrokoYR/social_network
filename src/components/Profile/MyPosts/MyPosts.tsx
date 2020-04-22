@@ -12,8 +12,8 @@ const MyPosts = () => {
 				<button>Add post</button>
 			</div>
 		    <div className={styles.posts}>
-                <Post text={'Hi, how are you?'}/>
-                <Post text={'This is my first post!'}/>
+                <Post text={`Hi, how are you?`}/>
+                <Post text={`This is my first post!`}/>
                 <Post text={`I'm okay, what bout ya?`}/>
             </div>
 		</div>

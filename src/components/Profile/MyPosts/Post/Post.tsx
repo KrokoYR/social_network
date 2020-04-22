@@ -3,7 +3,7 @@ import styles from "./Post.module.css";
 
 interface PostProps {
 	/** Text for post message */
-	text:string
+	text: string
 	/** Image url */
 	img?: string
 }
