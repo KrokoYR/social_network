@@ -11,16 +11,6 @@ const Profile = () => {
         />
       </div>
       <div>ava + description</div>
-      <div>
-        My post
-        <div>New post</div>
-        <div>
-          <div>post1</div>
-          <div>post2</div>
-          <div>post3</div>
-          <div>post4</div>
-        </div>
-      </div>
     </div>
   );
 };
