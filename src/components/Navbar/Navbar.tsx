@@ -1,4 +1,5 @@
 import React from 'react'
+import './Navbar.module.css'
 
 const Navbar = () => {
   return (
@@ -11,7 +12,6 @@ const Navbar = () => {
         <li>Settings</li>
       </ul>
     </nav>
-  )
-}
+  )}
 
 export default Navbar;
