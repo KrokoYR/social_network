@@ -1,14 +1,43 @@
-.Navbar {
+.navbar {
   grid-area: NavbarArea;
   background-color: blue;
 }
 
-.Navbar ul {
+.navbar ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.Navbar a {
-  color: white;
+.navbar__wrapper {
+  display: none;
 }
+
+@media (min-width: 772px) {
+  .navbar__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.navbar__link {
+  display: block;
+  text-decoration: none;
+  color: white;
+
+  padding: 5px;
+  background-color: green;
+}
+
+.navbar .active {
+  color: black;
+}
+
+.navbar__link:hover {
+  background-color: greenyellow;
+}
+
+
 
 
