@@ -1,4 +1,14 @@
-.nav {
-  grid-area: n;
+.Navbar {
+  grid-area: NavbarArea;
   background-color: blue;
 }
+
+.Navbar ul {
+  list-style-type: none;
+}
+
+.Navbar a {
+  color: white;
+}
+
+

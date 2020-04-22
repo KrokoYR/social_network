@@ -1,4 +1,9 @@
-.Profile {
-  grid-area: c;
+.profile {
+  grid-area: ProfileArea;
   background-color: red;
+}
+
+.profile img {
+  width: 100%;
+  height: 200px;
 }
