@@ -1,21 +1,42 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './Dialogs.module.css';
-import Recipient from "./recipient/Recipient";
-import Messages from "./messages/Messages";
+import Recipient, {RECIPIENT_OBJ} from "./recipient/Recipient";
+import Message from "./message/Message";
+import {MESSAGES_OBJ} from "../../redux/Reducers/Dialogs/Message/types";
 
-const Dialogs = () => {
+
+interface DialogsProps {
+	recipientData: RECIPIENT_OBJ[],
+	messagesData: MESSAGES_OBJ[]
+}
+
+const Dialogs: FC<DialogsProps> = ({recipientData,messagesData}) => {
+	
+	let dialogsRecipients = recipientData
+		.map(recipient => <Recipient id={recipient.id} name={recipient.name}/>)
+	
+	let dialogsMessages = messagesData
+		.map(message => <Message user_id={message.user_id} text={message.text} timestamp={message.timestamp}/>);
+	
+	let newMessageInput = React.createRef<HTMLTextAreaElement>()
+	let addMessage = () => {
+		let newMessage = newMessageInput.current?.value
+		if (newMessage) {
+			alert(newMessage)
+		}
+	}
+	
     return (
         <div className={styles.dialogs}>
 	        <div className="recipients">
-		        <Recipient name={'Harry'} id={'1'}/>
-		        <Recipient name={'Geremy'} id={'2'}/>
-		        <Recipient name={'Demi'} id={'3'}/>
-		        <Recipient name={'Paul'} id={'4'}/>
-		        <Recipient name={'Gabe'} id={'5'}/>
-		        <Recipient name={'Nevill'} id={'6'}/>
+		        {dialogsRecipients}
 	        </div>
 	        <div>
-		        <Messages />
+		        {dialogsMessages}
+		        <div>
+			        <textarea ref={newMessageInput}></textarea>
+			        <button onClick={addMessage}>Send</button>
+		        </div>
 	        </div>
         </div>
     )
