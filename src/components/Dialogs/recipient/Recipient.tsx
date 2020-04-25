@@ -1,14 +1,13 @@
 import React, {FC} from 'react';
-// @ts-ignore
 import styles from './Recipient.module.css';
 import {NavLink} from "react-router-dom";
 
-type RecipientProps = {
-    name: string,
-    id: string
+export interface RECIPIENT_OBJ {
+    id: string,
+    name: string
 }
 
-const Recipient: FC<RecipientProps> = ({name, id}) => {
+const Recipient: FC<RECIPIENT_OBJ> = ({id,name}) => {
     const recLink = '/dialogs/' + id;
     
     return (
