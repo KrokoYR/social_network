@@ -1,7 +1,8 @@
 export interface MESSAGES_OBJ {
-	user_id: string,
+	recipient_id: string,
 	text: string
 	timestamp: number
+	send_by_me: boolean
 }
 
 // Describing the different ACTION NAMES available
@@ -14,4 +15,4 @@ interface DeleteMessageAction {
 	};
 }
 
-export type ChatActionTypes = DeleteMessageAction;
+export type MessageActionTypes = DeleteMessageAction;

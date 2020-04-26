@@ -1,18 +1,18 @@
 import {
 	DELETE_MESSAGE,
-	ChatActionTypes
+	MessageActionTypes
 } from "./types";
 
-import {DialogState} from "../types";
+import { DialogState } from "../types";
 
 
 const initialState: DialogState = {
 	messages: []
 };
 
-export function chatReducer(
+export function messageReducer(
 	state = initialState,
-	action: ChatActionTypes
+	action: MessageActionTypes
 ): DialogState {
 	switch (action.type) {
 		case DELETE_MESSAGE:

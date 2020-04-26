@@ -1,6 +1,5 @@
 import {MESSAGES_OBJ} from "./Message/types";
 
-
 // Describing the different ACTION NAMES available
 export const SEND_MESSAGE = "SEND_MESSAGE";
 
@@ -13,4 +12,4 @@ interface SendMessageAction {
 	payload: MESSAGES_OBJ;
 }
 
-export type ChatActionTypes = SendMessageAction;
+export type DialogActionTypes = SendMessageAction;
