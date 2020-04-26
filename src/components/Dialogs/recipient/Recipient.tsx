@@ -1,11 +1,7 @@
 import React, {FC} from 'react';
 import styles from './Recipient.module.css';
 import {NavLink} from "react-router-dom";
-
-export interface RECIPIENT_OBJ {
-    id: string,
-    name: string
-}
+import {RECIPIENT_OBJ} from "../../../store/Reducers/Dialogs/Recipient/types";
 
 const Recipient: FC<RECIPIENT_OBJ> = ({id,name}) => {
     const recLink = '/dialogs/' + id;

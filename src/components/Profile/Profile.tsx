@@ -1,13 +1,14 @@
 import React, {FC} from "react";
-import MyPosts, { MyPostsElem } from "./MyPosts/MyPosts";
 import styles from './Profile.module.css'
+
+import PostsWall, {PostsWallElements} from "./PostsWall/PostsWall";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile:FC<MyPostsElem> = ({posts, addPost}) => {
+const Profile:FC<PostsWallElements> = ({posts}) => {
 	return (
 		<div className={styles.profile}>
 			<ProfileInfo/>
-			<MyPosts posts={posts} addPost={addPost}/>
+			<PostsWall posts={posts} />
 		</div>
 	);
 };

@@ -1,14 +1,6 @@
 import React from 'react'
 import styles from "./Post.module.css";
-
-export interface POST_OBJ {
-	/** Text for post message */
-	text: string
-	/** List counter: */
-	likesCounter: number
-	/** Image url */
-	img?: string
-}
+import {POST_OBJ} from "../../../../store/Reducers/Profile/PostsWall/Post/types";
 
 const Post: React.FC<POST_OBJ> = ({text, likesCounter, img}) => {
 	return (

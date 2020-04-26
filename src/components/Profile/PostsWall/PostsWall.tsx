@@ -1,22 +1,26 @@
 import React, {FC, TextareaHTMLAttributes} from "react";
-import styles from './MyPosts.module.css';
-import Post, {POST_OBJ} from "./Post/Post";
+import styles from './PostsWall.module.css';
+import Post from "./Post/Post";
+import {POST_OBJ} from "../../../store/Reducers/Profile/PostsWall/Post/types";
 
-export interface MyPostsElem {
-	posts: POST_OBJ[],
-	addPost: (newPost:string) => void
+export interface PostsWallElements {
+	posts: POST_OBJ[]
 }
 
-const MyPosts:FC<MyPostsElem> = ({posts,addPost}) => {
+const PostsWall:FC<PostsWallElements> = ({posts}) => {
 	let newPostElement = React.createRef<HTMLTextAreaElement>();
 	
 	let postsElements = posts
-		.map(post => <Post text={post.text} likesCounter={post.likesCounter}/>)
+		.map(post => <Post
+			text={post.text}
+			likesCounter={post.likesCounter}
+			timestamp={post.timestamp}/>)
 	
 	let addNewPost = () => {
 		let text = newPostElement.current?.value
 		if (text) {
-			addPost(text);
+			//TODO: add action to add new Post:
+			//addPost(text);
 		}
 	}
 	
@@ -36,4 +40,4 @@ const MyPosts:FC<MyPostsElem> = ({posts,addPost}) => {
 	)
 }
 
-export default MyPosts;
+export default PostsWall;

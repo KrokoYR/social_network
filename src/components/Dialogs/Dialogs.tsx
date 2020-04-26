@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import styles from './Dialogs.module.css';
-import Recipient, {RECIPIENT_OBJ} from "./recipient/Recipient";
+import Recipient from "./recipient/Recipient";
 import Message from "./message/Message";
-import {MESSAGES_OBJ} from "../../redux/Reducers/Dialogs/Message/types";
-
+import { MESSAGES_OBJ } from "../../store/Reducers/Dialogs/Message/types";
+import { RECIPIENT_OBJ } from '../../store/Reducers/Dialogs/Recipient/types';
 
 interface DialogsProps {
 	recipientData: RECIPIENT_OBJ[],
@@ -16,7 +16,11 @@ const Dialogs: FC<DialogsProps> = ({recipientData,messagesData}) => {
 		.map(recipient => <Recipient id={recipient.id} name={recipient.name}/>)
 	
 	let dialogsMessages = messagesData
-		.map(message => <Message user_id={message.user_id} text={message.text} timestamp={message.timestamp}/>);
+		.map(message => <Message
+			recipient_id={message.recipient_id}
+			text={message.text}
+			timestamp={message.timestamp}
+			send_by_me={false}/>);
 	
 	let newMessageInput = React.createRef<HTMLTextAreaElement>()
 	let addMessage = () => {
