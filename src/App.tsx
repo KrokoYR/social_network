@@ -4,10 +4,10 @@ import Header from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import Profile from './components/Profile/Profile'
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from 'react-router-dom';
-import {RECIPIENT_OBJ} from "./components/Dialogs/recipient/Recipient";
-import {POST_OBJ} from "./components/Profile/MyPosts/Post/Post";
-import {MESSAGES_OBJ} from "./redux/Reducers/Dialogs/Message/types";
+import { BrowserRouter, Route } from 'react-router-dom';
+import { MESSAGES_OBJ } from "./store/Reducers/Dialogs/Message/types";
+import { RECIPIENT_OBJ } from "./store/Reducers/Dialogs/Recipient/types";
+import { POST_OBJ } from './store/Reducers/Profile/PostsWall/Post/types';
 
 export interface AppProps {
 	state: {
@@ -18,7 +18,7 @@ export interface AppProps {
 	}
 }
 
-const App:FC<AppProps> = ({state}) => {
+const App = () => {
 	return (
 		<BrowserRouter>
 			<div className="app-wrapper">
@@ -29,12 +29,12 @@ const App:FC<AppProps> = ({state}) => {
 					{/*<Route path={'/dialogs'} component={Dialogs}/>*/}
 					<Route path={'/profile'} render={
 						(profileData) =>
-							<Profile posts={state.posts} addPost={state.addPost}/>}/>
+							<Profile posts={[]}/>}/>
 					
 					<Route path={'/dialogs'} render={
 						(dialogsData) =>
-							<Dialogs recipientData={state.recipients}
-							         messagesData={state.messages}/>
+							<Dialogs recipientData={[]}
+							         messagesData={[]}/>
 						}/>
 					<Route/>
 					<Route/>
