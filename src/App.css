@@ -7,11 +7,13 @@
             'Header Header'
             'NavbarArea contentArea';
 
-    grid-template-rows: 95px 1fr;
+    grid-template-rows: 60px 1fr;
     grid-template-columns: 3fr 9fr;
     column-gap: 20px;
 }
 
 .app-wrapper-content {
     grid-area: contentArea;
+    background-color: #2A2B32;
+    border-radius: 25px;
 }

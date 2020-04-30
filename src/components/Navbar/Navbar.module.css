@@ -1,6 +1,5 @@
 .navbar {
   grid-area: NavbarArea;
-  background-color: blue;
 }
 
 .navbar ul {
@@ -24,18 +23,22 @@
 .navbar__link {
   display: block;
   text-decoration: none;
-  color: white;
 
-  padding: 5px;
-  background-color: green;
+  padding: 10px;
+  padding-left: 30px;
+  color: white;
 }
 
 .navbar .active {
-  color: black;
+  color: #F30916;
 }
 
 .navbar__link:hover {
-  background-color: greenyellow;
+  color: orangered;
+}
+
+.navbar__link span {
+  margin-right: 15px;
 }
 
 
