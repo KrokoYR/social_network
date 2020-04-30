@@ -1,10 +1,10 @@
-import React, {FC, TextareaHTMLAttributes} from "react";
+import React, {FC} from "react";
 import styles from './PostsWall.module.css';
 import Post from "./Post/Post";
-import {POST_OBJ} from "../../../store/Reducers/Profile/PostsWall/Post/types";
+import { POST_TYPE } from "../../../store/Reducers/Profile/PostsWall/Post/types";
 
 export interface PostsWallElements {
-	posts: POST_OBJ[]
+	posts: POST_TYPE[]
 }
 
 const PostsWall:FC<PostsWallElements> = ({posts}) => {
@@ -13,7 +13,7 @@ const PostsWall:FC<PostsWallElements> = ({posts}) => {
 	let postsElements = posts
 		.map(post => <Post
 			text={post.text}
-			likesCounter={post.likesCounter}
+			likes_counter={post.likes_counter}
 			timestamp={post.timestamp}/>)
 	
 	let addNewPost = () => {
