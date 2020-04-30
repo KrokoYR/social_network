@@ -1,5 +1,5 @@
 .app-wrapper {
-    width: 1200px;
+    width: 1170px;
     margin: 0 auto;
     display: grid;
 
@@ -7,9 +7,9 @@
             'Header Header'
             'NavbarArea contentArea';
 
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    gap: 20px;
+    grid-template-rows: 95px 1fr;
+    grid-template-columns: 3fr 9fr;
+    column-gap: 20px;
 }
 
 .app-wrapper-content {
