@@ -1,26 +1,43 @@
-import {PostsWallsActionTypes, PostsWallState, SEND_POST} from './types'
-import {act} from "react-dom/test-utils";
+import {
+	PostsActionTypes,
+	PostsWallState,
+	SEND_POST,
+	UPDATE_NEW_POST_TEXT
+} from "./types";
+import {POST_TYPE} from "./Post/types";
+
 
 const initialState: PostsWallState = {
-	posts: [
-		{text: "Post1", timestamp: 1, likesCounter: 1},
-		{text: "Post2", timestamp: 2, likesCounter: 2},
-		{text: "Post3", timestamp: 3, likesCounter: 3},
-		{text: "Post4", timestamp: 4, likesCounter: 4},
-		{text: "Post5", timestamp: 5, likesCounter: 5},
-		{text: "Post6", timestamp: 6, likesCounter: 6},
-		{text: "Post7", timestamp: 7, likesCounter: 7},
-	]
+	newPostText: "",
+	posts: []
 }
 
-export function postsWallReducer(
+export function PostsWallReducer(
 	state = initialState,
-	action: PostsWallsActionTypes):PostsWallState {
+	action: PostsActionTypes
+): PostsWallState {
 	switch (action.type) {
-		case SEND_POST:
-			return {
-				posts: [...state.posts, action.payload]
+		case SEND_POST: {
+			const newPost: POST_TYPE = {
+				text: state.newPostText,
+				likes_counter: 12,
+				timestamp: Date.now()
 			}
+			
+			return {
+				...state,
+				newPostText: '',
+				posts: [...state.posts, newPost]
+			}
+		}
+		
+		case UPDATE_NEW_POST_TEXT: {
+			return {
+				...state,
+				newPostText: action.payload
+			}
+		}
+		
 		default:
 			return state;
 	}

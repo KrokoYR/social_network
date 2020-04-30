@@ -1,22 +1,19 @@
-export interface POST_OBJ {
-	/** Text for post message */
-	text: string
-	/** List counter: */
-	likesCounter: number
-	/** Image url */
-	img?: string
-	/** Timestamp */
-	timestamp: number
+export interface POST_TYPE {
+	text: string;
+	likes_counter: number;
+	timestamp: number;
+	img_url?: string;
+	video_url?: string;
 }
 
-// Describing the different ACTION NAMES available
+// Describing the different ACTION NAMES available:
 export const DELETE_POST = "DELETE_POST";
 
 interface DeletePostAction {
-	type: typeof DELETE_POST;
+	type: typeof DELETE_POST
 	meta: {
-		timestamp: number;
-	};
+		timestamp: number
+	}
 }
 
 export type PostActionTypes = DeletePostAction;

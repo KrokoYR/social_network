@@ -1,19 +1,26 @@
+import {PostsWallState} from "../types";
 import {DELETE_POST, PostActionTypes} from "./types";
 
-import {PostsWallState} from "../types";
 
 const initialState: PostsWallState = {
+	newPostText: '',
 	posts: []
 }
 
-export function postReducer(
-	state = initialState,
-	action: PostActionTypes):PostsWallState {
+export function PostReducer(
+	state= initialState,
+	action: PostActionTypes
+): PostsWallState {
 	switch (action.type) {
-		case DELETE_POST:
+		case DELETE_POST: {
 			return {
-				posts: state.posts.filter(post => post.timestamp !== action.meta.timestamp)
+				...state,
+				posts: state.posts.filter(
+					post => post.timestamp !== action.meta.timestamp
+				)
 			}
+		}
+		
 		default:
 			return state;
 	}
