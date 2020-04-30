@@ -1,30 +1,58 @@
 import {
-	DialogState,
+	DialogsActionTypes,
+	DialogsState,
 	SEND_MESSAGE,
-	DialogActionTypes
+	UPDATE_NEW_MESSAGE_TEXT,
+	DELETE_MESSAGE,
+	MESSAGE_TYPE
 } from "./types";
 
-const initialState: DialogState = {
+export const initialState: DialogsState = {
+	newMessage: '',
 	messages: [
-		{recipient_id: '1', text: 'Hello', timestamp: 0, send_by_me: false},
-		{recipient_id: '2', text: 'Hello1', timestamp: 0, send_by_me: false},
-		{recipient_id: '3', text: 'Hello2', timestamp: 0, send_by_me: false},
-		{recipient_id: '4', text: 'Hello3', timestamp: 0, send_by_me: false},
-		{recipient_id: '5', text: 'Hello4', timestamp: 0, send_by_me: false},
-		{recipient_id: '6', text: 'Hello5', timestamp: 0, send_by_me: false},
-		{recipient_id: '7', text: 'Hello6', timestamp: 0, send_by_me: false},
+		{user_id: "1", timestamp: 100, text: "HI"},
+		{user_id: "1", timestamp: 101, text: "HI"},
+		{user_id: "1", timestamp: 102, text: "HI"},
+		{user_id: "1", timestamp: 103, text: "HI"},
+		{user_id: "1", timestamp: 104, text: "HI"},
 	]
-};
+}
 
-export function dialogReducer(
+export function DialogsReducer(
 	state = initialState,
-	action: DialogActionTypes
-): DialogState {
+	action: DialogsActionTypes
+): DialogsState {
 	switch (action.type) {
-		case SEND_MESSAGE:
+		case SEND_MESSAGE: {
+			const newMessage: MESSAGE_TYPE = {
+				user_id: action.payload,
+				text: state.newMessage,
+				timestamp: Date.now()
+			}
+			
 			return {
-				messages: [...state.messages, action.payload]
+				...state,
+				newMessage: '',
+				messages: [...state.messages, newMessage]
 			};
+		}
+		
+		case UPDATE_NEW_MESSAGE_TEXT: {
+			return {
+				...state,
+				newMessage: action.payload
+			}
+		}
+		
+		case DELETE_MESSAGE: {
+			return {
+				...state,
+				messages: state.messages.filter(
+					message => message.timestamp !== action.meta.timestamp
+				)
+			}
+		}
+		
 		default:
 			return state;
 	}
