@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import {dialogReducer} from "./Reducers/Dialogs/dialogs-reducer";
+//Reducers:
+import {DialogsReducer} from "./Reducers/Dialogs/dialogs-reducer";
 
 
+// Root reducer:
 const rootReducer = combineReducers({
-	dialogReducer
+	dialogs: DialogsReducer
 })
 
 export type AppState = ReturnType<typeof rootReducer>;
