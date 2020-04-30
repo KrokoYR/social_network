@@ -1,11 +1,24 @@
 import React, {FC} from 'react';
 import styles from './Message.module.css';
-import { MESSAGES_OBJ } from '../../../store/Reducers/Dialogs/Message/types';
+import {MESSAGE_TYPE} from "../../../store/Reducers/Dialogs/types";
 
-const Message: FC<MESSAGES_OBJ> = ({text,recipient_id}) => {
+
+interface MessageProps {
+	message: MESSAGE_TYPE,
+	deleteMessage: (timestamp:number) => void
+}
+
+const Message: FC<MessageProps> = ({message, deleteMessage}) => {
+	const handleDeleteMessage = () => {
+		debugger
+		deleteMessage(message.timestamp);
+	}
+	
     return (
         <div className={styles.messages}>
-	        <p className={+recipient_id % 2 === 0 ? styles.sentByME : styles.sentByOther}>{text}</p>
+	        <p className={+message.user_id % 2 === 0 ? styles.sentByME : styles.sentByOther}>{ message.text }</p>
+	        <span>{message.timestamp}</span>
+	        <button onClick={handleDeleteMessage}>Delete message</button>
         </div>
     )
 }
