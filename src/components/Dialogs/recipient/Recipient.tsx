@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
 import styles from './Recipient.module.css';
-import {NavLink} from "react-router-dom";
-import {RECIPIENT_OBJ} from "../../../store/Reducers/Dialogs/Recipient/types";
+import { NavLink } from "react-router-dom";
+import { RECIPIENT_TYPE } from '../../../store/Reducers/Dialogs/types';
 
-const Recipient: FC<RECIPIENT_OBJ> = ({id,name}) => {
+
+const Recipient: FC<RECIPIENT_TYPE> = ({id,name}) => {
     const recLink = '/dialogs/' + id;
     
     return (
